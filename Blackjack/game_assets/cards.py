@@ -66,7 +66,13 @@ class Deck:
         random.shuffle(self._cards)
 
     def draw(self):
-        print("TODO give a card from the top of the list")
+        new_card = self._cards[0]
+        self._cards.remove(new_card)
+        return new_card
+
+    @property
+    def card_number(self):
+        return len(self._cards)
 
     def __str__(self):
         return f"{self._cards}"
@@ -74,4 +80,3 @@ class Deck:
 
 if __name__ == '__main__':
     deck = Deck()
-    print(deck)
