@@ -50,6 +50,13 @@ class Deck:
 
         names = ["Heart", "Club", "Diamond", "Spade"]
 
+        for name in names:
+            for card_data in cards:
+                card_name = f"{name} {card_data[0]}"
+                value = card_data[1]
+                new_card = Card(card_name, value)
+                self._cards.append(new_card)
+
     def draw(self):
         print("TODO give a card from the top of the list")
 
@@ -60,5 +67,4 @@ class Deck:
 if __name__ == '__main__':
     deck = Deck()
     deck.create()
-    deck.draw()
     print(deck)
