@@ -31,7 +31,25 @@ class Dice:
         return f"Color: {self.__color} Sides: {self.__sides}"
 
 
-dice6 = Dice(6, "White")
-print(dice6.color)
-dice6.color = "green"
-print(dice6.color)
+class Person:
+    def __init__(self, first_name, last_name):
+        self.__first_name = first_name
+        self.__last_name = last_name
+        self.__payments = [10, 20, 45, 20, 60, 80]
+
+    @property
+    def full_name(self):
+        return f"{self.__first_name} {self.__last_name}"
+
+    @property
+    def avarage_sallary(self):
+        all_payments_sum = sum(self.__payments)
+        return all_payments_sum / len(self.__payments)
+
+    def __str__(self):
+        return f"{self.__first_name} {self.__last_name}"
+
+
+csaba = Person("Kiss", "Csaba")
+print(csaba.full_name)
+print(csaba.avarage_sallary)
