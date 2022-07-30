@@ -28,13 +28,37 @@ class Card:
 
 
 class Deck:
-    pass
+    def __init__(self):
+        self._cards = []
+
+    def create(self):
+        cards = [
+            ["2", 2],
+            ["3", 3],
+            ["4", 4],
+            ["5", 5],
+            ["6", 6],
+            ["7", 7],
+            ["8", 8],
+            ["9", 9],
+            ["10", 10],
+            ["King", 10],
+            ["Queen", 10],
+            ["Jack", 10],
+            ["Ace", 11]
+        ]
+
+        names = ["Heart", "Club", "Diamond", "Spade"]
+
+    def draw(self):
+        print("TODO give a card from the top of the list")
+
+    def __str__(self):
+        return f"{self._cards}"
 
 
 if __name__ == '__main__':
-    card1 = Card("Spade King", 10)
-    card2 = Card("Club 2", 2)
-    card3 = Card("Diamond Ace", 11)
-
-    card3.change_value()
-    print(card3)
+    deck = Deck()
+    deck.create()
+    deck.draw()
+    print(deck)
