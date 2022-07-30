@@ -19,15 +19,15 @@ class Dice:
     def get_color(self):
         return self.__color
 
+    def set_sides(self, new_sides):
+        assert isinstance(new_sides, int), "sides must be of type int"
+        assert new_sides >= 1, "sides must be greater or equal to 1"
+        self.__sides = new_sides
+
     def __str__(self):
         return f"Color: {self.__color} Sides: {self.__sides}"
 
 
 dice6 = Dice(6, "White")
+dice6.set_sides(-10)
 print(dice6)
-
-print(dice6.get_color())
-print(dice6.get_sides())
-
-dice6.__color = "Red"
-print(dice6.get_color())
