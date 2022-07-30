@@ -1,3 +1,6 @@
+import random
+
+
 class Card:
     def __init__(self, name, value):
         self._name = name
@@ -32,6 +35,8 @@ class Deck:
         self._cards = []
 
     def create(self):
+        self._cards.clear()
+
         cards = [
             ["2", 2],
             ["3", 3],
@@ -57,6 +62,8 @@ class Deck:
                 new_card = Card(card_name, value)
                 self._cards.append(new_card)
 
+        random.shuffle(self._cards)
+
     def draw(self):
         print("TODO give a card from the top of the list")
 
@@ -66,5 +73,8 @@ class Deck:
 
 if __name__ == '__main__':
     deck = Deck()
+
+    deck.create()
+    print(deck)
     deck.create()
     print(deck)
