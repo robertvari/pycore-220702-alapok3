@@ -33,8 +33,9 @@ class Card:
 class Deck:
     def __init__(self):
         self._cards = []
+        self.shuffle()
 
-    def create(self):
+    def shuffle(self):
         self._cards.clear()
 
         cards = [
@@ -73,8 +74,4 @@ class Deck:
 
 if __name__ == '__main__':
     deck = Deck()
-
-    deck.create()
-    print(deck)
-    deck.create()
     print(deck)
