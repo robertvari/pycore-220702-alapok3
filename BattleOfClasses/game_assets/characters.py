@@ -22,6 +22,10 @@ class CharacterBase:
 
         self._create()
 
+    @property
+    def name(self):
+        return self._name
+
     def _create(self):
         self._name = self.get_fantasy_name()
         self._race = random.choice(list(self.race_list))
