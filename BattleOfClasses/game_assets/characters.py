@@ -18,13 +18,12 @@ class CharacterBase:
         self._right_hand = None
 
         self._strength = 0
-        self._initiative = 0
+        self._initiative = random.randint(10, 100)
 
         self._create()
 
     def _create(self):
         self._name = self.get_fantasy_name()
-        self._initiative = random.randint(10, 100)
         self._race = random.choice(list(self.race_list))
         self._strength = self.race_list[self._race]["strength"]
 
@@ -56,7 +55,14 @@ class CharacterBase:
 
 
 class Player(CharacterBase):
-    pass
+    def _create(self):
+        self._name = input("What is your name traveller?")
+        self._race = input(f"What is your race? {list(self.race_list)}")
+
+        while self._race not in list(self.race_list):
+            self._race = input(f"What is your race? {list(self.race_list)}")
+
+        self._strength = self.race_list[self._race]["strength"]
 
 
 class AIPlayer(CharacterBase):
@@ -65,5 +71,7 @@ class AIPlayer(CharacterBase):
 
 if __name__ == '__main__':
     ai_player = AIPlayer()
+    player = Player()
 
     print(ai_player)
+    print(player)
