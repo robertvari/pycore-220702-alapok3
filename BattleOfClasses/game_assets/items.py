@@ -62,7 +62,6 @@ class Drink(Consumable):
 
 class Weapon(ItemBase):
     def use(self, character):
-        print(f"{self._name} damage: {character}")
         character.take_damage(20)
 
 
