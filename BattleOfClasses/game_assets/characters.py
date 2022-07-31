@@ -33,8 +33,12 @@ class CharacterBase:
         return self._current_HP
 
     def take_damage(self, damage):
-        print(f"{self._name} takes {damage} damage.")
         self._current_HP -= damage
+        if self._current_HP < 0:
+            self._current_HP = 0
+            print(f"{self.name} is dead :(")
+
+        print(f"{self._name} takes {damage} damage. Current HP: {self._current_HP}")
 
     def heal(self, value):
         self._current_HP += value

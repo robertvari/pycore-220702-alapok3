@@ -39,14 +39,10 @@ if __name__ == '__main__':
 
     bread = Food("Bread", 2)
     milk = Drink("Milk", 4)
-    stick = CommonItem("Stick", 1)
-    sword = Weapon("Sword", 23)
 
     ai_player = AIPlayer()
     ai_player.take_damage(34)
+    ai_player.take_damage(10)
 
     bread.use(ai_player)
     milk.use(ai_player)
-
-    stick.use(ai_player)
-    sword.use(ai_player)
