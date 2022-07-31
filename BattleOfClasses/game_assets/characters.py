@@ -1,4 +1,5 @@
 import random
+from game_assets.items import Weapon
 
 
 class CharacterBase:
@@ -47,6 +48,13 @@ class CharacterBase:
 
         print(f"{self._name} heals {value}. Current HP: {self._current_HP}")
 
+    def give_items(self, item_list):
+        for i in item_list:
+            self._inventory.append(i)
+
+            if not self._right_hand and isinstance(i, Weapon):
+                self._right_hand = i
+
     def _create(self):
         self._name = self.get_fantasy_name()
         self._race = random.choice(list(self.race_list))
@@ -84,13 +92,15 @@ class CharacterBase:
 
 class Player(CharacterBase):
     def _create(self):
-        self._name = input("What is your name traveller?")
-        self._race = input(f"What is your race? {list(self.race_list)}")
+        self._name = "Robert"
+        self._race = "human"
 
         while self._race not in list(self.race_list):
             self._race = input(f"What is your race? {list(self.race_list)}")
 
         self._strength = self.race_list[self._race]["strength"]
+        self._max_HP = self.race_list[self._race]["max_HP"]
+        self._current_HP = self._max_HP
 
 
 class AIPlayer(CharacterBase):

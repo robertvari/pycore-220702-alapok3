@@ -11,7 +11,7 @@ class ItemBase:
 
     @staticmethod
     def generate_item_list():
-        with open("item_list.json") as f:
+        with open("game_assets/item_list.json") as f:
             item_data = json.load(f)
 
         item_list = []
