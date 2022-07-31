@@ -18,6 +18,12 @@ class PlayerBase:
         self._name = f"{random.choice(first_names)} {random.choice(last_names)}"
         self._credits = random.randint(10, 100)
 
+    def init_hand(self, deck):
+        self._hand = [
+            deck.draw(),
+            deck.draw()
+        ]
+
     def __str__(self):
         return f"Name: {self._name}\nCredits: {self._credits}\nCards: {self._hand}"
 
@@ -34,8 +40,14 @@ class AIPlayer(PlayerBase):
 
 
 if __name__ == '__main__':
+    from game_assets.cards import Deck
+    deck = Deck()
+
     player = Player()
     ai_player = AIPlayer()
+
+    player.init_hand(deck)
+    ai_player.init_hand(deck)
 
     print(player)
     print(ai_player)
