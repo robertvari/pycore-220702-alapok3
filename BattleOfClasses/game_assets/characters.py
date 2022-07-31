@@ -26,6 +26,7 @@ class CharacterBase:
         self._name = self.get_fantasy_name()
         self._initiative = random.randint(10, 100)
         self._race = random.choice(list(self.race_list))
+        self._strength = self.race_list[self._race]["strength"]
 
     @staticmethod
     def get_fantasy_name():
