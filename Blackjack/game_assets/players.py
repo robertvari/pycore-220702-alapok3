@@ -72,6 +72,25 @@ class Player(PlayerBase):
         # todo remove this comment!!! self._name = input("What is your name?")
         self._name = "Robert Vari"
 
+    def draw_cards(self, deck):
+        print("This is your torn!")
+
+        while self._in_game:
+            print(f"Your cards: {self._hand}")
+            print(f"Hand value: {self.count_hand()}")
+
+            player_input = input("Do you want to draw a new card? (y/n)")
+
+            if player_input == "y":
+                new_card = deck.draw()
+                print(f"Your new card: {new_card}")
+
+                if new_card.value == 11 and self.count_hand() > 10:
+                    new_card.change_value()
+
+                self._hand.append(new_card)
+            else:
+                self._in_game = False
 
 class AIPlayer(PlayerBase):
     pass
