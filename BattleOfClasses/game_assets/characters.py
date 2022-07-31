@@ -2,8 +2,16 @@ import random
 
 
 class CharacterBase:
+    race_list = {
+        "human": {"strength": 20},
+        "ork": {"strength": 100},
+        "elf": {"strength": 30},
+        "dwarf": {"strength": 150},
+    }
+
     def __init__(self):
         self._name = None
+        self._race = None
 
         self._golds = random.randint(0, 200)
         self._inventory = []
@@ -12,8 +20,12 @@ class CharacterBase:
         self._strength = 0
         self._initiative = 0
 
+        self._create()
+
     def _create(self):
-        pass
+        self._name = self.get_fantasy_name()
+        self._initiative = random.randint(10, 100)
+        self._race = random.choice(list(self.race_list))
 
     @staticmethod
     def get_fantasy_name():
@@ -32,7 +44,8 @@ class CharacterBase:
         return f"{random.choice(FIRST)}{random.choice(SECOND)}"
 
     def __str__(self):
-        return f"==============={self._name}================\n" \
+        return f"===============  {self._name}  ================\n" \
+               f"Race: {self._race}\n" \
                f"Golds: {self._golds}\n" \
                f"Inventory: {self._inventory}\n" \
                f"Right hand: {self._right_hand}\n" \
@@ -51,4 +64,5 @@ class AIPlayer(CharacterBase):
 
 if __name__ == '__main__':
     ai_player = AIPlayer()
+
     print(ai_player)
