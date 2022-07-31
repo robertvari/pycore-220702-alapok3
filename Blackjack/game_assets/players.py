@@ -39,6 +39,25 @@ class PlayerBase:
         self._credits -= bet
         return bet
 
+    def draw_cards(self, deck):
+        print("-"*20, f"{self._name} turn", "-"*20)
+
+        while self._in_game:
+            hand_value = self.count_hand()
+
+            if hand_value < random.randint(16, 19):
+                new_card = deck.draw()
+
+                if hand_value > 10 and new_card.value == 11:
+                    new_card.change_value()
+                self._hand.append(new_card)
+            else:
+                print(f"{self._name} passes...")
+                self._in_game = False
+
+    def count_hand(self):
+        return sum([card.value for card in self._hand])
+
     def __str__(self):
         return f"Name: {self._name}\nCredits: {self._credits}\nCards: {self._hand}"
 
@@ -69,12 +88,10 @@ if __name__ == '__main__':
     ai_player.init_hand(deck)
 
     # give bet
-    # reward += player.give_bet()
-    # reward += ai_player.give_bet()
-
-    for _ in range(20):
-        ai_player.give_bet()
-        if not ai_player._in_game:
-            break
+    reward += player.give_bet()
+    reward += ai_player.give_bet()
 
     # start player turns
+    player_list = [player, ai_player]
+    for p in player_list:
+        p.draw_cards(deck)
