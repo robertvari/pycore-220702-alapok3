@@ -92,6 +92,7 @@ class Player(PlayerBase):
             else:
                 self._in_game = False
 
+
 class AIPlayer(PlayerBase):
     pass
 
