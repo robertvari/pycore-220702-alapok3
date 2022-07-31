@@ -1,4 +1,5 @@
 import random
+import time
 
 
 class PlayerBase:
@@ -46,6 +47,8 @@ class PlayerBase:
             hand_value = self.count_hand()
 
             if hand_value < random.randint(16, 19):
+                print(f"{self._name} draws a card...")
+                time.sleep(1)
                 new_card = deck.draw()
 
                 if hand_value > 10 and new_card.value == 11:
@@ -59,7 +62,7 @@ class PlayerBase:
         return sum([card.value for card in self._hand])
 
     def __str__(self):
-        return f"Name: {self._name}\nCredits: {self._credits}\nCards: {self._hand}"
+        return f"Name: {self._name}\nCredits: {self._credits}\nCards: {self._hand}\nHand Value: {self.count_hand()}"
 
 
 class Player(PlayerBase):
@@ -95,3 +98,6 @@ if __name__ == '__main__':
     player_list = [player, ai_player]
     for p in player_list:
         p.draw_cards(deck)
+
+    print(player)
+    print(ai_player)
