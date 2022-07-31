@@ -1,0 +1,7 @@
+{
+  "Sword": {"price":  20, "type": "Weapon"},
+  "Spear": {"price":  34, "type": "Weapon"},
+  "Bread": {"price":  3, "type": "Food"},
+  "Milk": {"price":  3, "type": "Drink"},
+  "Beer": {"price":  6, "type": "Drink"}
+}

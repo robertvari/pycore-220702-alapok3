@@ -1,3 +1,6 @@
+import json
+
+
 class ItemBase:
     def __init__(self, name, price):
         self._name = name
@@ -5,6 +8,28 @@ class ItemBase:
 
     def use(self, character):
         print("ItemBase use called!")
+
+    @staticmethod
+    def generate_item_list():
+        with open("item_list.json") as f:
+            item_data = json.load(f)
+
+        item_list = []
+        for item_name, data in item_data.items():
+            price = data["price"]
+            item_type = data["type"]
+            if item_type == "Weapon":
+                new_item = Weapon(item_name, price)
+            elif item_type == "Food":
+                new_item = Food(item_name, price)
+            elif item_type == "Drink":
+                new_item = Drink(item_name, price)
+            else:
+                new_item = CommonItem(item_name, price)
+
+            item_list.append(new_item)
+
+        return []
 
     def __str__(self):
         return f"Name: {self._name} Price: {self._price} golds\n"
@@ -38,14 +63,4 @@ class Weapon(ItemBase):
 
 
 if __name__ == '__main__':
-    from game_assets.characters import AIPlayer
-
-    bread = Food("Bread", 2)
-    milk = Drink("Milk", 4)
-
-    ai_player = AIPlayer()
-    ai_player.take_damage(34)
-    ai_player.take_damage(10)
-
-    bread.use(ai_player)
-    milk.use(ai_player)
+    item_list = ItemBase.generate_item_list()
