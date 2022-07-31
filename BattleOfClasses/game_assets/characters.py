@@ -30,6 +30,10 @@ class CharacterBase:
         return self._name
 
     @property
+    def initiative(self):
+        return self._initiative
+
+    @property
     def current_HP(self):
         return self._current_HP
 
