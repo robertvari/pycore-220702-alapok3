@@ -29,10 +29,13 @@ class ItemBase:
 
             item_list.append(new_item)
 
-        return []
+        return item_list
 
     def __str__(self):
         return f"Name: {self._name} Price: {self._price} golds\n"
+
+    def __repr__(self):
+        return self._name
 
 
 class CommonItem(ItemBase):
@@ -64,3 +67,4 @@ class Weapon(ItemBase):
 
 if __name__ == '__main__':
     item_list = ItemBase.generate_item_list()
+    print(item_list)
