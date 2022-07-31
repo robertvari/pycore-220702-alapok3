@@ -17,6 +17,10 @@ class PlayerBase:
     def in_game(self):
         return self._in_game
 
+    @property
+    def name(self):
+        return self._name
+
     def _create(self):
         first_names = ["Brittney", "Curtis", "Lucas", "Chip", "Simon"]
         last_names = ["Moriah", "Tristin", "Troy", "Gale", "Lynn"]

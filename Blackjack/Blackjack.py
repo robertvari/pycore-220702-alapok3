@@ -39,6 +39,7 @@ class Blackjack:
         self._get_winner()
 
     def _get_winner(self):
+        print("-"*100)
         players_in_turn = [player for player in self._players if player.count_hand() <= 21]
 
         if not players_in_turn:
@@ -47,9 +48,10 @@ class Blackjack:
             winner_list = sorted(players_in_turn, key=lambda player: player.count_hand())
             winner = winner_list[-1]
 
-            print(f"The winner is: {winner}")
+            print(f"The winner is: {winner.name}")
             winner.give_reward(self._reward)
 
+        print("-" * 100)
         player_input = input("Do you want to play a new round? (y/n)")
         if player_input == "y":
             self._start_game()
