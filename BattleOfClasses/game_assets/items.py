@@ -17,16 +17,19 @@ class CommonItem(ItemBase):
 
 class Consumable(ItemBase):
     def use(self, character):
-        print(f"{character.name} consume {self._name}")
         character.heal(20)
 
 
 class Food(Consumable):
-    pass
+    def use(self, character):
+        print(f"{character.name} eats {self._name}")
+        super().use(character)
 
 
 class Drink(Consumable):
-    pass
+    def use(self, character):
+        print(f"{character.name} drinks {self._name}")
+        super().use(character)
 
 
 class Weapon(ItemBase):
