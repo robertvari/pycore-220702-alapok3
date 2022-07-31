@@ -23,6 +23,10 @@ class PlayerBase:
         self._name = f"{random.choice(first_names)} {random.choice(last_names)}"
         self._credits = random.randint(10, 100)
 
+    def give_reward(self, reward):
+        print(f"{self._name} wins {reward}.")
+        self._credits += reward
+
     def init_hand(self, deck):
         self._hand = [
             deck.draw(),

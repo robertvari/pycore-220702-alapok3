@@ -39,7 +39,22 @@ class Blackjack:
         self._get_winner()
 
     def _get_winner(self):
-        print("TODO Get Winner")
+        players_in_turn = [player for player in self._players if player.count_hand() <= 21]
+
+        if not players_in_turn:
+            print("Nobody wins this time :(")
+        else:
+            winner_list = sorted(players_in_turn, key=lambda player: player.count_hand())
+            winner = winner_list[-1]
+
+            print(f"The winner is: {winner}")
+            winner.give_reward(self._reward)
+
+        player_input = input("Do you want to play a new round? (y/n)")
+        if player_input == "y":
+            self._start_game()
+        else:
+            self._exit_game()
 
     @staticmethod
     def _exit_game():
