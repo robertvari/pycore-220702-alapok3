@@ -15,14 +15,18 @@ class CommonItem(ItemBase):
         print(f"{character.name} uses {self._name}")
 
 
-class Food(ItemBase):
+class Consumable(ItemBase):
     def use(self, character):
-        print(f"{character.name} eats {self._name}")
+        print(f"{character.name} consume {self._name}")
+        character.heal(20)
 
 
-class Drink(ItemBase):
-    def use(self, character):
-        print(f"{character.name} drinks {self._name}")
+class Food(Consumable):
+    pass
+
+
+class Drink(Consumable):
+    pass
 
 
 class Weapon(ItemBase):
@@ -39,8 +43,10 @@ if __name__ == '__main__':
     sword = Weapon("Sword", 23)
 
     ai_player = AIPlayer()
+    ai_player.take_damage(34)
 
     bread.use(ai_player)
     milk.use(ai_player)
+
     stick.use(ai_player)
     sword.use(ai_player)

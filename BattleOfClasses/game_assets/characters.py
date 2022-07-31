@@ -28,6 +28,21 @@ class CharacterBase:
     def name(self):
         return self._name
 
+    @property
+    def current_HP(self):
+        return self._current_HP
+
+    def take_damage(self, damage):
+        print(f"{self._name} takes {damage} damage.")
+        self._current_HP -= damage
+
+    def heal(self, value):
+        self._current_HP += value
+        if self._current_HP > self._max_HP:
+            self._current_HP = self._max_HP
+
+        print(f"{self._name} heals {value}. Current HP: {self._current_HP}")
+
     def _create(self):
         self._name = self.get_fantasy_name()
         self._race = random.choice(list(self.race_list))
