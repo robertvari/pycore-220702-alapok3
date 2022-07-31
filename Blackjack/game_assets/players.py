@@ -3,12 +3,18 @@ import random
 
 class PlayerBase:
     def __init__(self):
+        # create attributes with default values
         self._name = None
-        self._credits = random.randint(10, 100)
+        self._credits = 0
         self._hand = []
+        self._in_game = True
 
-    def say_hello(self):
-        print(f"Hello, my name is {self._name}")
+        # start methods
+        self._create()
+
+    def _create(self):
+        first_names = ["Brittney", "Curtis", "Lucas", "Chip", "Simon"]
+        last_names = ["Moriah", "Tristin", "Troy", "Gale", "Lynn"]
 
     def __str__(self):
         return f"Name: {self._name}\nCredits: {self._credits}\nCards: {self._hand}"
