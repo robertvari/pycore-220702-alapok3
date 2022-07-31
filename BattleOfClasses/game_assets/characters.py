@@ -1,4 +1,4 @@
-import random
+import random, time
 from game_assets.items import Weapon
 
 
@@ -43,13 +43,16 @@ class CharacterBase:
 
     def attack(self, other):
         print(f"{self._name} attacks {other.name}")
+        time.sleep(2)
 
         attack_strength = random.randint(0, self._strength)
         if self._right_hand:
             self._right_hand.use(other)
+            time.sleep(2)
 
         if attack_strength:
             other.take_damage(attack_strength)
+            time.sleep(2)
         else:
             print(f"{self.name} misses {other.name}")
 
