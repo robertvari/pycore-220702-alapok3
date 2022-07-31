@@ -34,8 +34,24 @@ class CharacterBase:
         return self._initiative
 
     @property
+    def dead(self):
+        return self._current_HP <= 0
+
+    @property
     def current_HP(self):
         return self._current_HP
+
+    def attack(self, other):
+        print(f"{self._name} attacks {other.name}")
+
+        attack_strength = random.randint(0, self._strength)
+        if self._right_hand:
+            self._right_hand.use(other)
+
+        if attack_strength:
+            other.take_damage(attack_strength)
+        else:
+            print(f"{self.name} misses {other.name}")
 
     def take_damage(self, damage):
         self._current_HP -= damage
