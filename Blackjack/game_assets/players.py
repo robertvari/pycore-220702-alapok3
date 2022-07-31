@@ -29,6 +29,8 @@ class PlayerBase:
             deck.draw()
         ]
 
+        self._in_game = True
+
     def give_bet(self):
         bet = 10
 
