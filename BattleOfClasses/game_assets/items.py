@@ -34,7 +34,7 @@ if __name__ == '__main__':
     from game_assets.characters import AIPlayer
 
     bread = Food("Bread", 2)
-    milk = Food("Milk", 4)
+    milk = Drink("Milk", 4)
     stick = CommonItem("Stick", 1)
     sword = Weapon("Sword", 23)
 

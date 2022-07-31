@@ -3,10 +3,10 @@ import random
 
 class CharacterBase:
     race_list = {
-        "human": {"strength": 20},
-        "ork": {"strength": 100},
-        "elf": {"strength": 30},
-        "dwarf": {"strength": 150},
+        "human": {"strength": 20, "max_HP": 50},
+        "ork": {"strength": 100, "max_HP": 130},
+        "elf": {"strength": 30, "max_HP": 80},
+        "dwarf": {"strength": 150, "max_HP": 130},
     }
 
     def __init__(self):
@@ -19,6 +19,8 @@ class CharacterBase:
 
         self._strength = 0
         self._initiative = random.randint(10, 100)
+        self._current_HP = 0
+        self._max_HP = 0
 
         self._create()
 
@@ -30,6 +32,8 @@ class CharacterBase:
         self._name = self.get_fantasy_name()
         self._race = random.choice(list(self.race_list))
         self._strength = self.race_list[self._race]["strength"]
+        self._max_HP = self.race_list[self._race]["max_HP"]
+        self._current_HP = self._max_HP
 
     @staticmethod
     def get_fantasy_name():
@@ -55,6 +59,7 @@ class CharacterBase:
                f"Right hand: {self._right_hand}\n" \
                f"Strength: {self._strength}\n" \
                f"Initiative: {self._initiative}\n" \
+               f"Current HP: {self._current_HP}\n" \
                f"=======================================\n"
 
 
